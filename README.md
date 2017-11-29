@@ -31,6 +31,17 @@ gulp
 ```
 And you're good to go!
 
+## API
+The API can be accessed by running the `gulp` command above and then navigating to:
+```
+http://localhost:3000/episodes
+```
+You can filter it using search queries in the URL. If you want to return all the episodes for a season for instance, you can type:
+```
+http://localhost:3000/episodes?season=1
+```
+for example.
+
 ## Tests
 To run the tests, you will need to have installed Karma and jasmine globally as well as the Google Chrome browser (please install the last one seperately):
 ```
