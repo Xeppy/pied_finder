@@ -42,6 +42,11 @@ a:hover {
   .quotes {
     margin: 20px;
   }
+
+  .quotes > h2 {
+    color: rgb(160, 160, 160);
+    font-weight: 300;
+  }
   
   @keyframes fade_classified {
     from { opacity: 1; }
