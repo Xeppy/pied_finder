@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Pied Finder</title>
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+    <link href="node_modules/mdi/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/style.css">
+
+  </head>
+
+  <body ng-app="piedFinder" ng-controller="piedFinderController" ng-cloak>
+
+    <md-toolbar md-scroll-shrink>
+            <div class="md-toolbar-tools"> 
+                <p><strong>Pied Finder</strong></p>
+                <md-button ng-click="showFilters = !showFilters">
+                <md-icon class="mdi mdi-magnify"></md-icon>
+                Search
+                </md-button>
+            </div>
+    </md-toolbar>
+
+
+    <div class="filters" layout="row" layout-align="center center" ng-show="showFilters">
+        <md-input-container>
+            <label>Search using an episode title</label>
+            <input ng-model="piedFilter.name" type="text">
+        </md-input-container>
+    
+        <md-input-container>
+            <label>Season</label>
+            <md-select ng-model="piedFilter.season">
+            <md-option ng-repeat="season in seasons" value="{{ season }}">  
+                {{ season }}
+            </md-option>
+            </md-select>
+        </md-input-container>
+        
+        <div layout="row">
+            <md-button ng-click="piedFilter.name = '';piedFilter.season='';" class="md-warn">
+            Clear
+            </md-button>
+        </div> 
+    </div>
+
+    <div class="quotes"><strong>&ldquo;{{item}}&rdquo;</strong></div>
+    <md-content class="md-padding" layout="row" layout-wrap>
+            <md-card ng-repeat="episode in episodes | 
+                     filter:piedFilter:strict"
+                     flex-sm="90"
+                     flex-gt-sm="30"
+                     class="episode">
+                <img ng-src="{{ episode.image.medium }}" class="md-card-image">
+                <md-card-content>
+                    <div class="episode-title">
+                      <a ng-href="{{episode.url}}"><h2 class="md-title">{{ episode.name }}</h2></a>
+                      <p>Season {{episode.season}}, Episode {{episode.number}}</p>
+                      <p>First aired: {{episode.airdate | date}}</p>
+                    </div>
+
+                </md-card-content>
+            </md-card>
+            <div ng-show="(episodes | filter:piedFilter).length == 0">
+            <h1 >Sorry, no episodes match that search!</h1>
+            <p><strong>Blame it on Jian-Yang...</strong></p>
+            </div>
+        </md-content>
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.js"></script>
+    <script src="node_modules/lodash/lodash.min.js"></script>
+    <script src="index.js"></script>
+    <script src="components/piedFinder.ctrl.js"></script>
+    <script src="components/piedFinder.fac.js"></script>
+
+  </body>
+</html>

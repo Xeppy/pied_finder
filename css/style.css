@@ -1,0 +1,50 @@
+md-card img {
+    width: 100%;
+    height: auto !important;
+    min-height: 0px;
+  }
+  
+  button .material-icons {
+    margin-bottom: 12px;
+  }
+  
+  .filters md-input-container {
+    margin-right: 10px;
+  }
+  
+  .episode.ng-enter, .classified.ng-move {
+    transition: 0.4s all;
+    opacity: 0;
+  }
+  
+  .episode.ng-enter.ng-enter-active, .classified.ng-move.ng-move-active {
+    opacity: 1;
+  }
+
+  .episode-title > h2 {
+    padding-right: 10px;
+  }
+  .episode-title > a {
+    text-decoration: none;
+  }
+a:link, a:visited, a:active {
+  color: rgb(61, 145, 117);
+}
+
+a:hover {
+    color: rgb(98, 192, 142);
+}
+  
+  .episode.ng-leave {
+    animation: 0.4s fade_classified;
+  }
+
+  .quotes {
+    margin: 20px;
+  }
+  
+  @keyframes fade_classified {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+  
